@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alugar Produto</title>
+    <script>
+        function atualizarPreco() {
+            const precoMensal = parseFloat(document.getElementById('preco-mensal').textContent);
+            const meses = parseInt(document.getElementById('id_meses').value);
+            const precoTotal = precoMensal * meses;
+
+            // Atualiza o valor total na página
+            document.getElementById('preco-total').textContent = precoTotal.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <h1>Alugar: {{ produto.nome }}</h1>
+
+    <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" width="200">
+
+    <p><strong>Descrição:</strong> {{ produto.descricao }}</p>
+    <p><strong>Preço mensal:</strong> R$ <span id="preco-mensal">{{ produto.preco|floatformat:2 }}</span></p>
+    <p><strong>Estoque disponível:</strong> {{ produto.estoque }}</p> <!-- Exibe o estoque -->
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <p><strong>Preço total:</strong> R$ <span id="preco-total">0.00</span></p>
+        
+        <button type="submit">Confirmar Aluguel</button>
+    </form>
+
+    <a href="{% url 'listar_produtos' %}">Voltar</a>
+
+    <script>
+        // Define um valor inicial para o preço total
+        document.getElementById('id_meses').addEventListener('input', atualizarPreco);
+        atualizarPreco(); // Inicializa o cálculo ao carregar a página
+    </script>
+</body>
+</html>

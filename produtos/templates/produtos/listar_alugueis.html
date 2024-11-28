@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Aluguéis</title>
+</head>
+<body>
+    <h1>Meus Aluguéis</h1>
+    
+    <ul>
+        {% for aluguel in alugueis %}
+            <li>
+                <strong>Notebook:</strong> {{ aluguel.notebook.nome }}<br>
+                <strong>Meses:</strong> {{ aluguel.meses }}<br>
+                <strong>Data do aluguel:</strong> {{ aluguel.data_aluguel|date:"d/m/Y H:i" }}<br>
+            </li>
+        {% empty %}
+            <p>Você ainda não realizou nenhum aluguel.</p>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'listar_produtos' %}">Voltar</a>
+</body>
+</html>

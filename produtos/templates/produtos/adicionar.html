@@ -1,0 +1,48 @@
+<!-- produtos/templates/produtos/adicionar.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adicionar Produto</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/adicionarForm.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+  </head>
+  <body>
+    <h1 class="adicionarTitle">ADICIONAR NOVO PRODUTO</h1>
+    <a href="{% url 'produtos:listar_modelos' %}" class="listarModelos">Listar Modelos</a>
+    <form
+      method="get"
+      action="{% url 'produtos:listar_modelos' %}"
+      class="campoPesquisar"
+    >
+      <label for="search">Pesquisar modelo:</label>
+      <input
+        type="text"
+        id="search"
+        name="model_name"
+        placeholder="Digite o nome do modelo"
+      />
+      <button type="submit" class="buttonBuscar">Buscar</button>
+    </form>
+    <form method="post" enctype="multipart/form-data " class="adicionarCampos">
+      {% csrf_token %} {{ form.as_p }}{% if form.imagem.value %}
+      <div>
+        <label>Imagem atual:</label>
+        <a href="{{ form.imagem.value }}" target="_blank"
+          >{{ form.imagem.value }}</a
+        >
+      </div>
+      {% endif %}
+      <button type="submit" class="botaoAdicionar">Adicionar Produto</button>
+    </form>
+    <a href="{% url 'produtos:listar_produtos' %}"
+      class="linkVoltar">Voltar à lista de produtos</a
+    >
+  </body>
+</html>

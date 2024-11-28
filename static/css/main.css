@@ -1,0 +1,97 @@
+body {
+  background-color: black;
+}
+
+.mainTitle {
+  font-family: "Poppins";
+  color: #f79824;
+  font-weight: 900;
+  font-size: 2rem;
+  padding: 10px;
+}
+
+.boasVindas {
+  color: #f79824;
+  font-family: "Poppins";
+}
+
+.boasVindasAdmin {
+  color: #f79824;
+  font-family: "Poppins";
+  text-decoration: none;
+}
+
+.boasVindasAdmin:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.linkLogin {
+  font-family: "Poppins";
+  color: white;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.linkLogin:hover {
+  text-decoration: underline;
+  color: #f79824;
+}
+
+.inicioUsuario {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0px 20px;
+  margin-top: 20px;
+}
+
+.nomeUsuario {
+  font-family: "Poppins";
+  font-weight: 500;
+  color: white;
+}
+
+.listaProdutos {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+}
+
+.cardProduto {
+  background-color: white;
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  height: 350px;
+  width: 300px;
+  border-radius: 15px;
+  border-radius: 15px;
+  background: #b0b0b0;
+  box-shadow: inset -5px -5px 5px #969696, inset 5px 5px 5px #cacaca;
+}
+
+.informacoesProduto {
+  font-family: "Poppins";
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.funcoesProduto {
+  font-family: "Poppins";
+  font-weight: 600;
+}
+
+.funcoesProduto a {
+  text-decoration: none;
+  color: black;
+}
+
+.funcoesProduto a:hover {
+  color: #f79824;
+  text-decoration: underline;
+}

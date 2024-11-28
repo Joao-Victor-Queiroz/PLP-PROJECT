@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos os Aluguéis</title>
+</head>
+<body>
+    <h1>Todos os Aluguéis</h1>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Usuário</th>
+                <th>Notebook</th>
+                <th>Meses</th>
+                <th>Data do Aluguel</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aluguel in alugueis %}
+            <tr>
+                <td>{{ aluguel.id }}</td>
+                <td>{{ aluguel.usuario.username }}</td>
+                <td>{{ aluguel.notebook.nome }}</td>
+                <td>{{ aluguel.meses }}</td>
+                <td>{{ aluguel.data_aluguel|date:"d/m/Y H:i" }}</td>
+                <td>
+                    <form method="POST" action="{% url 'produtos:deletar_aluguel' aluguel.id %}">
+                        {% csrf_token %}
+                        <button type="submit" onclick="return confirm('Deseja realmente excluir este aluguel?');">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">Nenhum aluguel encontrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'listar_produtos' %}">Voltar</a>
+</body>
+</html>

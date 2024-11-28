@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+  </head>
+  <body>
+    <main class="loginForm">
+      <h2 class="loginTitle">LOGIN</h2>
+
+      <form method="POST" class="loginCampos">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="buttonForm">Entrar</button>
+      </form>
+
+      <br />
+      <a href="{% url 'cadastro' %}" class="redirecionar">Ainda não tem conta? Cadastre-se!</a>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!-- produtos/templates/produtos/editar.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Produto</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/editar.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" />
+  </head>
+  <body>
+    <h1 class="adicionarTitle">Editar Produto: {{ produto.nome }}</h1>
+    <form method="post" enctype="multipart/form-data" class="adicionarCampos">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit" class="botaoAdicionar">Salvar Alterações</button>
+    </form>
+    <a href="{% url 'produtos:listar_produtos' %}" class="linkVoltar"
+      >Voltar à lista de produtos</a
+    >
+  </body>
+</html>
